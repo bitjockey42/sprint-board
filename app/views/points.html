@@ -1,0 +1,6 @@
+<div ng-controller="PointsCtrl">
+  <input type="text" ng-model="search.name">  
+  <ul ng-repeat="point in tags.data | filter:search">
+    <li><b>{{ point.id }}</b> - {{ point.name }}</li>
+  </ul>
+</div>
