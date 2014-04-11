@@ -11,13 +11,34 @@ describe('Service: Asana', function () {
 
   beforeEach(module('Asana'));
 
-  beforeEach(inject(function ($injector) {
+  beforeEach(module(function ($provide) {
+    $provide.value('WORKSPACE_ID', 123);
+  }));
+
+  beforeEach(inject(function ($injector) {    
     fakeAsanaAPI = $injector.get('$httpBackend');
+    $injector.get('WORKSPACE_ID');
   }));
 
   afterEach(function () {
     fakeAsanaAPI.verifyNoOutstandingExpectation();
     fakeAsanaAPI.verifyNoOutstandingRequest();
+  });
+
+  describe('Workspace', function () {
+    var Workspace;
+    beforeEach(inject(function ($injector) {
+      setupFakeApi(fakeAsanaAPI, {method: 'GET', url: 'https://app.asana.com/api/1.0/workspaces/123/tags'});
+      Workspace = $injector.get('Workspace');
+    }))
+
+    describe('.list', function () {
+      it('retrieves a list of tags', function() {
+        Workspace.get({path: 'tags'});
+        fakeAsanaAPI.expectGET('https://app.asana.com/api/1.0/workspaces/123/tags');
+        fakeAsanaAPI.flush();           
+      })
+    });
   });
 
   describe('Task', function () {
@@ -65,10 +86,9 @@ describe('Service: Asana', function () {
     var Tag;
     beforeEach(inject(function ($injector) {
       setupFakeApi(fakeAsanaAPI, { method: 'GET', url: 'https://app.asana.com/api/1.0/tags/123/tasks' });
-      setupFakeApi(fakeAsanaAPI, { method: 'GET', url: 'https://app.asana.com/api/1.0/tags/123' });
+      setupFakeApi(fakeAsanaAPI, { method: 'GET', url: 'https://app.asana.com/api/1.0/tags/123' });     
       Tag = $injector.get('Tag');
     }));
-
 
     describe('.get', function () {
       it('retrieves the tag information', function () {
