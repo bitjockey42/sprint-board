@@ -13,6 +13,10 @@ angular.module('kanbanBoardApp', [
         templateUrl: 'views/board.html',
         controller: 'BoardCtrl'
       })
+      .when('/tags', {
+        templateUrl: 'views/tags.html',
+        controller: 'BoardCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
