@@ -4,3 +4,4 @@ dist
 .sass-cache
 app/bower_components
 config.js
+.DS_Store

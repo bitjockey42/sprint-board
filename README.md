@@ -12,6 +12,23 @@ A task provider is defined here as a third-party service that manages task lists
 
  - [Asana](https://asana.com)
 
+Requirements
+==================
+
+Install node and npm.
+
+Then `cd` to the board directory and run
+
+  npm install
+
+This will install the packages from `packages.json`.
+
+Then run 
+
+  grunt build
+
+
+
 Setup
 ===================
 
