@@ -15,7 +15,7 @@ describe('Service: Asana', function () {
     $provide.value('WORKSPACE_ID', 123);
   }));
 
-  beforeEach(inject(function ($injector) {    
+  beforeEach(inject(function ($injector) {
     fakeAsanaAPI = $injector.get('$httpBackend');
     $injector.get('WORKSPACE_ID');
   }));
@@ -32,11 +32,11 @@ describe('Service: Asana', function () {
       Workspace = $injector.get('Workspace');
     }))
 
-    describe('.list', function () {
+    describe('#list', function () {
       it('retrieves a list of tags', function() {
         Workspace.get({path: 'tags'});
         fakeAsanaAPI.expectGET('https://app.asana.com/api/1.0/workspaces/123/tags');
-        fakeAsanaAPI.flush();           
+        fakeAsanaAPI.flush();
       })
     });
   });
@@ -48,11 +48,11 @@ describe('Service: Asana', function () {
       Task = $injector.get('Task');
     }));
 
-    describe('.get', function () {
+    describe('#get', function () {
       it('retrieves the tasks', function () {
         Task.get();
         fakeAsanaAPI.expectGET('https://app.asana.com/api/1.0/tasks');
-        fakeAsanaAPI.flush();        
+        fakeAsanaAPI.flush();
       });
     });
   });
@@ -65,7 +65,7 @@ describe('Service: Asana', function () {
       Project = $injector.get('Project');
     }));
 
-    describe('.get', function () {
+    describe('#get', function () {
       it('retrieves the project', function () {
         Project.get({projectId: 123});
         fakeAsanaAPI.expectGET('https://app.asana.com/api/1.0/projects/123');
@@ -73,7 +73,7 @@ describe('Service: Asana', function () {
       });
     });
 
-    describe('.tasks', function() {
+    describe('#tasks', function() {
       it('retrieves the tasks in the project', function () {
         Project.tasks({projectId: 123});
         fakeAsanaAPI.expectGET('https://app.asana.com/api/1.0/projects/123/tasks');
@@ -86,11 +86,11 @@ describe('Service: Asana', function () {
     var Tag;
     beforeEach(inject(function ($injector) {
       setupFakeApi(fakeAsanaAPI, { method: 'GET', url: 'https://app.asana.com/api/1.0/tags/123/tasks' });
-      setupFakeApi(fakeAsanaAPI, { method: 'GET', url: 'https://app.asana.com/api/1.0/tags/123' });     
+      setupFakeApi(fakeAsanaAPI, { method: 'GET', url: 'https://app.asana.com/api/1.0/tags/123' });
       Tag = $injector.get('Tag');
     }));
 
-    describe('.get', function () {
+    describe('#get', function () {
       it('retrieves the tag information', function () {
         Tag.get({tagId: 123});
         fakeAsanaAPI.expectGET('https://app.asana.com/api/1.0/tags/123');
@@ -98,7 +98,7 @@ describe('Service: Asana', function () {
       });
     });
 
-    describe('.tasks', function() {
+    describe('#tasks', function() {
       it('retrieves the tasks in the tag', function () {
         Tag.tasks({tagId: 123});
         fakeAsanaAPI.expectGET('https://app.asana.com/api/1.0/tags/123/tasks');
