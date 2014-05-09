@@ -1,3 +1,9 @@
-<p>This is the board view.</p>
+<div ng-controller="BoardCtrl" ng-init="loadProjectTasks()">
+  <h1>Board</h1>
+
+  <ul ng-show="tasksLoaded()" ng-repeat="task in tasks">
+    <li><b>{{ task.id }}</b> - {{ task.name }}</li>
+  </ul>
+</div>
 
 
