@@ -7,9 +7,11 @@
     <div ng-controller="TaskCtrl" 
          ng-init="loadTaskTags()"
          ng-show="taskTagsLoaded()">
-      <ul ng-controller="PointsCtrl">
-        {{ getPointTags(taskTags) }}
-      </ul>
+
+      <div ng-controller="PointsCtrl">
+        <p>{{ taskPoints(taskTags) }}</p>
+      </div>
+
     </div>
   </div>
 </div>
