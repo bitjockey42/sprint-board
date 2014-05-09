@@ -15,4 +15,12 @@ angular.module('kanbanBoardApp')
         tagsLoaded = true;
       });
     };
+    
+    $scope.getPointTags = function (tags) {
+      return tags.filter( function (tag) {
+        if (tag.name.match(/points/)) {
+          return tag;
+        }
+      });
+    };
   }]);
