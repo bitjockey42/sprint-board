@@ -2,7 +2,8 @@
 
 angular.module('Asana')
   .service('Task', ['$resource', 'ASANA_API_URL', function Task($resource, ASANA_API_URL) {
-    return $resource(ASANA_API_URL + '/tasks', {}, {
-      get: {method: 'GET'}
+    return $resource(ASANA_API_URL + '/tasks/:taskId/:path', {taskId: "@id", path: "@path"}, {
+      get: {method: 'GET'},
+      tags: {method: 'GET', params: {path: "tags"}}
     });
   }]);
