@@ -23,4 +23,8 @@ angular.module('kanbanBoardApp')
         }
       });
     };
+    
+    $scope.tagPointValue = function (tag) {
+      return tag.name.replace(/[^\d+]/g, '');
+    }
   }]);
