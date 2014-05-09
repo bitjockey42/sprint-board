@@ -22,6 +22,7 @@ angular.module('kanbanBoardApp')
       if (pointTags.length > 0) {
         pointValue = $scope.tagPointValue(pointTags[0]);
       }
+
       return pointValue;
     };
 

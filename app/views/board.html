@@ -1,17 +1,15 @@
 <div ng-controller="BoardCtrl" ng-init="loadProjectTasks()">
   <h1>Board</h1>
 
+  <h2>Total: {{ pointTotal }}</h2>
+
   <div ng-show="tasksLoaded()" ng-repeat="task in tasks">
     <h2> {{ task.name }}</h2>
     
     <div ng-controller="TaskCtrl" 
          ng-init="loadTaskTags()"
          ng-show="taskTagsLoaded()">
-
-      <div ng-controller="PointsCtrl">
-        <p>{{ taskPoints(taskTags) }}</p>
-      </div>
-
+      <p style="color: white; background: red; font-size: 20pt; padding: 2px;">{{ taskPoints(taskTags) }}</p>
     </div>
   </div>
 </div>
