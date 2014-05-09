@@ -2,7 +2,6 @@
 
 angular.module('kanbanBoardApp')
   .controller('TaskCtrl', ['$scope', 'Task', function ($scope, Task) {
-    $scope.taskPoints = [];
     var taskPointsLoaded = false;
 
     $scope.taskPointsLoaded = function () {
