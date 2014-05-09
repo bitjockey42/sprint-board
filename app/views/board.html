@@ -1,4 +1,4 @@
-<div ng-controller="BoardCtrl" ng-init="loadProjectTasks()">
+<div ng-controller="BoardCtrl" ng-init="init()">
   <h1>Board</h1>
 
   <h2>Total: {{ calculateTotal() }}</h2>
@@ -11,9 +11,19 @@
     <div ng-controller="TaskCtrl" 
          ng-init="loadTaskPoints()"
          ng-show="taskPointsLoaded()">
+
       <p style="color: white; background: red; font-size: 20pt; padding: 2px;">{{ points }}</p>
+
+
+      <div ng-show="tagsLoaded()">
+        {{ getPointTags(tags) }}
+      </div>
+
     </div>
+
+    <hr>
   </div>
+
 </div>
 
 
