@@ -16,7 +16,8 @@
 
 
       <div ng-show="tagsLoaded()">
-        <select ng-model="taskPointTag" ng-options="pointTag.name for pointTag in getPointTags(tags)">
+        <select ng-model="taskPointTag" 
+                ng-options="pointTag.name for pointTag in getPointTags(tags) | orderBy: 'name'">
           <option value="">Select a point</option>
         </select>
       </div>
