@@ -12,6 +12,7 @@ angular.module('kanbanBoardApp')
     $scope.loadTaskPoints = function () {
       Task.tags({taskId: $scope.task.id}, function (response) {
         $scope.points = $scope.taskPoints(response.data);
+        $scope.pointsTotal.push($scope.points);
         taskPointsLoaded = true;
       });
     };
