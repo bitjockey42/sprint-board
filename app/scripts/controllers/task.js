@@ -2,17 +2,17 @@
 
 angular.module('kanbanBoardApp')
   .controller('TaskCtrl', ['$scope', 'Task', function ($scope, Task) {
-    $scope.taskTags = [];
-    var taskTagsLoaded = false;
+    $scope.taskPoints = [];
+    var taskPointsLoaded = false;
 
-    $scope.taskTagsLoaded = function () {
-      return taskTagsLoaded;
+    $scope.taskPointsLoaded = function () {
+      return taskPointsLoaded;
     };
 
-    $scope.loadTaskTags = function () {
+    $scope.loadTaskPoints = function () {
       Task.tags({taskId: $scope.task.id}, function (response) {
-        $scope.taskTags = response.data;
-        taskTagsLoaded = true;
+        $scope.points = $scope.taskPoints(response.data);
+        taskPointsLoaded = true;
       });
     };
 

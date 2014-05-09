@@ -19,6 +19,7 @@ angular.module('kanbanBoardApp')
     $scope.taskPoints = function (tags) {
       var pointTags = $scope.getPointTags(tags);
       var pointValue = 0;
+
       if (pointTags.length > 0) {
         pointValue = $scope.tagPointValue(pointTags[0]);
       }
