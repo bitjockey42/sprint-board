@@ -17,17 +17,29 @@ Requirements
 
 Install node and npm.
 
+    sudo pacman -S nodejs
+
 Then `cd` to the board directory and run
 
-  npm install
+    npm install
 
 This will install the packages from `packages.json`.
 
-Then run 
+Then install `grunt` and `bower` as root.
 
-  grunt build
+    sudo npm install -g grunt-cli bower
 
+Install `bower` packages:
 
+    bower install
+
+Then build the app with `grunt`:
+
+    grunt build
+
+Finally, run the server:
+
+    grunt serve
 
 Setup
 ===================
