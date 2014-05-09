@@ -1,7 +1,7 @@
 <div ng-controller="BoardCtrl" ng-init="loadProjectTasks()">
   <h1>Board</h1>
 
-  <h2>Total: {{ pointsTotal }}</h2>
+  <h2>Total: {{ calculateTotal() }}</h2>
 
   <div ng-show="tasksLoaded()" ng-repeat="task in tasks">
     <h2> {{ task.name }}</h2>

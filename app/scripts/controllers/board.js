@@ -17,4 +17,10 @@ angular.module('kanbanBoardApp')
       });
     };
 
+    $scope.calculateTotal = function() {
+      return $scope.pointsTotal.reduce( function(a,b) {
+        return a + b;
+      });
+    };
+
   }]);
