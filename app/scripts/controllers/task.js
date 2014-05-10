@@ -39,6 +39,7 @@ angular.module('kanbanBoardApp')
     }
 
     $scope.setPointTag = function () {
+      $scope.resetPointTags();
       Task.addTag({taskId: $scope.task.id}, {data: {tag: $scope.pointTag.id}}, function (response) {
         $scope.points = $scope.taskPoints([$scope.pointTag]);
         $scope.pointsTotal.push($scope.points);
