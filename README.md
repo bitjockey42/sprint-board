@@ -1,4 +1,4 @@
-Kanban Board App
+gKanban Board App
 -------------------
 
 This will display tasks from task list provider into kanban board style.
@@ -40,6 +40,30 @@ Then build the app with `grunt`:
 Finally, run the server:
 
     grunt serve
+
+Compass
+===========
+
+If using `rbenv` to manage rubies, you'll need to set the global ruby to the `rbenv` installed one:
+
+    rbenv global 2.1.1
+
+Then reload `rbenv`:
+
+    rbenv rehash
+
+Check where `ruby` is pointing to (it should be something like this):
+
+    $HOME/.rbenv/shims/ruby
+
+Then install the `compass` gem:
+
+    gem install compass
+    rbenv rehash
+
+Make sure the command `compass` is found:
+
+    compass -v
 
 Setup
 ===================
