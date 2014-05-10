@@ -36,4 +36,10 @@ angular.module('kanbanBoardApp')
     $scope.tagPointValue = function (tag) {
       return parseInt(tag.name.replace(/[^\d+]/g, ''));
     }
+
+    $scope.setPointTag = function () {
+      Task.addTag({taskId: $scope.task.id}, {data: {tag: $scope.pointTag.id}}, function (response) {
+        console.log(response.data);
+      });
+    };
   }]);
