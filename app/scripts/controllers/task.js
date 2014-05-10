@@ -51,6 +51,7 @@ angular.module('kanbanBoardApp')
         $scope.removePointTag(pointTag.id);
       });
       $scope.points = 0;
+      $scope.pointsTotal[$scope.task.id] = $scope.points;
     };
 
     $scope.removePointTag = function (pointTagId) {
