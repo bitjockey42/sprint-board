@@ -14,7 +14,6 @@
 
       <p style="color: white; background: red; font-size: 20pt; padding: 2px;">{{ points }}</p>
 
-
       <div ng-show="tagsLoaded()">
         <select ng-model="pointTag" 
                 ng-options="pointTag.name for pointTag in getPointTags(tags) | orderBy: 'name'">
