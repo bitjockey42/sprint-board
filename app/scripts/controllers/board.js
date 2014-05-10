@@ -36,7 +36,8 @@ angular.module('kanbanBoardApp')
     };
 
     $scope.calculateTotal = function() {
-      return $scope.pointsTotal.reduce( function(a,b) {
+      var pointValues = _.values($scope.pointsTotal);
+      return pointValues.reduce( function(a,b) {
         return a + b;
       });
     };
