@@ -42,4 +42,12 @@ angular.module('kanbanBoardApp')
       });
     };
 
+    $scope.isProjectHeader = function (task) {
+      if (task.name.match(/:$/)) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+
   }]);

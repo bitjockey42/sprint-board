@@ -6,29 +6,36 @@
   <pre>{{ pointsTotal }}</pre>
 
   <div ng-show="tasksLoaded()" ng-repeat="task in tasks">
-    <h2>{{ task.id }} {{ task.name }}</h2>
-    
-    <div ng-controller="TaskCtrl" 
-         ng-init="loadTaskPoints()"
-         ng-show="taskPointsLoaded()">
+    <div ng-switch on="isProjectHeader(task)">
+      <div ng-switch-when=false>
+        <p>{{ task.id }} {{ task.name }}</p>
+        
+        <div ng-controller="TaskCtrl" 
+             ng-init="loadTaskPoints()"
+             ng-show="taskPointsLoaded()">
 
-      <p style="color: white; background: red; font-size: 20pt; padding: 2px;">{{ points }}</p>
+          <p style="color: white; background: red; font-size: 20pt; padding: 2px;">{{ points }}</p>
 
-      <div ng-show="tagsLoaded()">
-        <select ng-model="pointTag" 
-                ng-options="pointTag.name for pointTag in getPointTags(tags) | orderBy: 'name'">
-          <option value="">Select a point</option>
-        </select>
-        {{ pointTag }}
-        <button ng-click="setPointTag()">set point</button>
-        <button ng-click="resetPointTags()">reset points</button>
+          <div ng-show="tagsLoaded()">
+            <select ng-model="pointTag" 
+                    ng-options="pointTag.name for pointTag in getPointTags(tags) | orderBy: 'name'">
+              <option value="">Select a point</option>
+            </select>
+            {{ pointTag }}
+            <button ng-click="setPointTag()">set point</button>
+            <button ng-click="resetPointTags()">reset points</button>
+          </div>
+
+        </div>
       </div>
 
+      <div ng-switch-when=true><h2>{{ task.name }}</h2></div>
+
+      <hr>
     </div>
-
-    <hr>
   </div>
-
 </div>
+
+
 
 
