@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('kanbanBoardApp')
-  .controller('SprintCtrl', ['$scope', 'Workspace', 'Project', 'WORKSPACE_ID', function ($scope, Workspace, Project, WORKSPACE_ID) {
+  .controller('SprintCtrl', ['$scope', 'Workspace', function ($scope, Workspace) {
     
     $scope.sprintProjects = [];
-    $scope.currentSprintProject = "None";
+    $scope.currentSprintProject = "";
 
     var sprintProjectsLoaded = false;
 
@@ -13,7 +13,7 @@ angular.module('kanbanBoardApp')
     };
 
     $scope.loadSprintProjects = function () {
-      Workspace.projects({}, function (response, status) {
+      Workspace.projects({}, function (response) {
         $scope.sprintProjects = $scope.filterSprintProjects(response.data);
         sprintProjectsLoaded = true;
       });
@@ -29,4 +29,4 @@ angular.module('kanbanBoardApp')
       $scope.currentSprintProject = $scope.sprintProject;
     };
 
-}]);
+  }]);

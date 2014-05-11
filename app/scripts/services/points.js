@@ -20,6 +20,6 @@ angular.module('kanbanBoardApp')
     };
 
     this.tagPointValue = function (tag) {
-      return parseInt(tag.name.replace(/[^\d+]/g, ''));      
+      return parseInt(tag.name.replace(/[^\d+]/g, ''));
     };
   });

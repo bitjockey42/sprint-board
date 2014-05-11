@@ -19,8 +19,8 @@ angular.module('kanbanBoardApp')
 
     $scope.setPointTag = function () {
       $scope.resetPointTags();
-      Task.addTag({taskId: $scope.task.id}, {data: {tag: $scope.pointTag.id}}, function (response) {
-        $scope.points = $scope.taskPoints([$scope.pointTag]);
+      Task.addTag({taskId: $scope.task.id}, {data: {tag: $scope.pointTag.id}}, function () {
+        $scope.points = Points.forTask([$scope.pointTag]);
         $scope.pointsByTaskId[$scope.task.id] = $scope.points;
       });
     };
@@ -34,8 +34,6 @@ angular.module('kanbanBoardApp')
     };
 
     $scope.removePointTag = function (pointTagId) {
-      Task.removeTag({taskId: $scope.task.id}, {data: {tag: pointTagId}}, function (response, status) {
-
-      });
+      Task.removeTag({taskId: $scope.task.id}, {data: {tag: pointTagId}});
     };
   }]);

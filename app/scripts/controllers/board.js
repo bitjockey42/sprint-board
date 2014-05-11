@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kanbanBoardApp')
-  .controller('BoardCtrl', ['$scope', 'Project', 'Workspace', 'Points', 'WORKSPACE_ID', function ($scope, Project, Workspace, Points, WORKSPACE_ID) {
+  .controller('BoardCtrl', ['$scope', 'Project', 'Workspace', 'Points', function ($scope, Project, Workspace, Points) {
 
     $scope.tasks = [];
     $scope.allPointTags = [];
@@ -9,7 +9,7 @@ angular.module('kanbanBoardApp')
     var tagsLoaded = false;
 
     $scope.$watch('currentSprintProject', function (newValue, oldValue) {
-      if (newValue == oldValue) {
+      if (newValue === oldValue) {
         return;
       } else {
         $scope.pointsByTaskId = {};
@@ -38,7 +38,7 @@ angular.module('kanbanBoardApp')
 
     $scope.tasksLoaded = function () {
       return tasksLoaded;
-    }
+    };
 
     $scope.tagsLoaded = function () {
       return tagsLoaded;
