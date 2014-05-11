@@ -4,6 +4,7 @@ angular.module('kanbanBoardApp')
   .controller('SprintCtrl', ['$scope', 'Workspace', 'Project', 'WORKSPACE_ID', function ($scope, Workspace, Project, WORKSPACE_ID) {
     
     $scope.sprintProjects = [];
+    $scope.currentSprintProject = "None";
     var sprintProjectsLoaded = false;
 
     $scope.sprintProjectsLoaded = function () {
@@ -22,4 +23,9 @@ angular.module('kanbanBoardApp')
         return project.name.match(/(S|s)print/);
       });
     };
+
+    $scope.setCurrentSprintProject = function () {
+      $scope.currentSprintProject = $scope.sprintProject;
+    };
+
 }]);
