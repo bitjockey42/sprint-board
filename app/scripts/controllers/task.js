@@ -42,4 +42,8 @@ angular.module('kanbanBoardApp')
       return points > 0;
     };
 
+    $scope.pointValue = function (pointTag) {
+      return Points.tagPointValue(pointTag);
+    };
+
   }]);

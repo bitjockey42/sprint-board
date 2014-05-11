@@ -40,17 +40,16 @@
             <td>
 
               <div class="btn-toolbar" role="toolbar">
-                <div class="btn-group">
+                <div class="btn-group btn-group-sm">
                   <button 
                      class="btn btn-default"
                      ng-repeat="pointTag in allPointTags | orderBy: 'name'"
                      ng-click="setPointTag(pointTag)">
-                    {{ pointTag.name }}
+                    {{ pointValue(pointTag) }}
                   </button>
                 </div>
               </div>
 
-              <button type="button" class="btn btn-info btn-xs" ng-click="setPointTag()">set point</button>
               <button type="button" class="btn btn-default btn-xs" ng-click="resetPointTags()">reset points</button>
             </td>
           </tr>
