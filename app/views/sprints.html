@@ -35,13 +35,20 @@
               ng-controller="TaskCtrl"
               ng-init="loadTaskPoints()">
             <td><span class="label"
-                      ng-class="{true: 'label-success', false: 'label-default'}[shouldHighlightPoints(points)]">{{ points }}</span></td>
+                      ng-class="{true: 'label-success', false: 'label-default'}[shouldHighlightPoints(points)]">{{ points }} points</span></td>
             <td>{{ task.name }}</td>
             <td>
-              <select ng-model="pointTag" 
-                      ng-options="pointTag.name for pointTag in allPointTags | orderBy: 'name'">
-                <option value="">Select a point</option>
-              </select>
+
+              <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group">
+                  <button 
+                     class="btn btn-default"
+                     ng-repeat="pointTag in allPointTags | orderBy: 'name'"
+                     ng-click="setPointTag(pointTag)">
+                    {{ pointTag.name }}
+                  </button>
+                </div>
+              </div>
 
               <button type="button" class="btn btn-info btn-xs" ng-click="setPointTag()">set point</button>
               <button type="button" class="btn btn-default btn-xs" ng-click="resetPointTags()">reset points</button>
