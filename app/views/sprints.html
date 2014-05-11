@@ -38,7 +38,10 @@
                       class="label"
                       ng-class="{true: 'label-success', false: 'label-default'}[shouldHighlightPoints(points)]">{{ points }} points</span></td>
             <td ng-switch on="isProjectHeader(task)">
-              <h3 ng-switch-when=true>{{ task.name }}</h3>
+              <div class="alert alert-info" 
+                   ng-switch-when=true>
+                <h2>{{ task.name }}</h2>
+              </div>
               <p ng-switch-when=false>{{ task.name }}</p>
             </td>
             <td>
