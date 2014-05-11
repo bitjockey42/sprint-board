@@ -1,42 +1,21 @@
 'use strict';
 
 angular.module('kanbanBoardApp')
-  .controller('TaskCtrl', ['$scope', 'Task', function ($scope, Task) {
+  .controller('TaskCtrl', ['$scope', 'Task', 'Points', function ($scope, Task, Points) {
     var taskPointsLoaded = false;
-
-    $scope.taskPointsLoaded = function () {
-      return taskPointsLoaded;
-    };
 
     $scope.loadTaskPoints = function () {
       Task.tags({taskId: $scope.task.id}, function (response) {
-        $scope.points = $scope.taskPoints(response.data);
+        $scope.points = Points.forTask(response.data);
         $scope.pointsByTaskId[$scope.task.id] = $scope.points;
-        $scope.pointTags = $scope.getPointTags(response.data);
+        $scope.pointTags = Points.getPointTags(response.data);
         taskPointsLoaded = true;
       });
     };
 
-    $scope.taskPoints = function (tags) {
-      var pointTags = $scope.getPointTags(tags);
-      var pointValue = 0;
-      if (pointTags.length > 0) {
-        pointValue = $scope.tagPointValue(pointTags[0]);
-      }
-      return pointValue;
+    $scope.taskPointsLoaded = function () {
+      return taskPointsLoaded;
     };
-
-    $scope.getPointTags = function (tags) {
-      return tags.filter( function (tag) {
-        if (tag.name.match(/point/)) {
-          return tag;
-        }
-      });
-    };
-    
-    $scope.tagPointValue = function (tag) {
-      return parseInt(tag.name.replace(/[^\d+]/g, ''));
-    }
 
     $scope.setPointTag = function () {
       $scope.resetPointTags();
