@@ -6,7 +6,8 @@ angular.module('kanbanBoardApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'chieffancypants.loadingBar'
 ])
   .config(function ($routeProvider) {
     $routeProvider
