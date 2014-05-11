@@ -48,9 +48,16 @@
                     {{ pointValue(pointTag) }}
                   </button>
                 </div>
+                
+                <div class="btn-group btn-group-sm">
+                  <button type="button" 
+                          class="btn btn-default btn-xs" 
+                          ng-click="resetPointTags()">
+                    <span class="glyphicon glyphicon-trash"></span>
+                  </button>                  
+                </div>
               </div>
 
-              <button type="button" class="btn btn-default btn-xs" ng-click="resetPointTags()">reset points</button>
             </td>
           </tr>
         </tbody>
