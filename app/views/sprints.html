@@ -34,12 +34,14 @@
           <tr ng-repeat="task in tasks"
               ng-controller="TaskCtrl"
               ng-init="loadTaskPoints()">
-            <td><span class="label"
+            <td><span ng-hide="isProjectHeader(task)"
+                      class="label"
                       ng-class="{true: 'label-success', false: 'label-default'}[shouldHighlightPoints(points)]">{{ points }} points</span></td>
             <td>{{ task.name }}</td>
             <td>
 
-              <div class="btn-toolbar" role="toolbar">
+              <div ng-hide="isProjectHeader(task)"
+                 class="btn-toolbar" role="toolbar">
                 <div class="btn-group btn-group-sm">
                   <button 
                      class="btn btn-default"
