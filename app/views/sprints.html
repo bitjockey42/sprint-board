@@ -7,19 +7,23 @@
       <h1 class="page-header">{{ currentSprintProject.name }} <small>Currently Selected Sprint</small></h1>
       
       
-      <div class="col-md-6 list-group">
-        <a class="list-group-item"
-           ng-repeat="sprintProject in sprintProjects"
-           ng-click="setCurrentSprintProject(sprintProject)">
-          {{ sprintProject.name }}
-        </a>
+      <div class="col-md-6">
+        <div class="list-group">
+          <a class="list-group-item"
+             ng-repeat="sprintProject in sprintProjects"
+             ng-click="setCurrentSprintProject(sprintProject)">
+            {{ sprintProject.name }}
+          </a>
+        </div>
       </div>
 
 
-      <div class="col-md-4 panel panel-primary">
-        <div class="panel-heading">Total Points</div>
-        <div class="panel-body">
-          <h1>{{ calculateTotal() }}</h1>
+      <div class="col-md-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Total Points</div>
+          <div class="panel-body">
+            <h1>{{ calculateTotal() }}</h1>
+          </div>
         </div>
       </div>
     </div>
