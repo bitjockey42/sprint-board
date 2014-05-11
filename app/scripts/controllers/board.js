@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('kanbanBoardApp')
-  .controller('BoardCtrl', ['$scope', 'Task', 'Project', 'Workspace', 'Tag', 'WORKSPACE_ID', 'PROJECT_ID', function ($scope, Task, Project, Workspace, Tag, WORKSPACE_ID, PROJECT_ID) {
+  .controller('BoardCtrl', ['$scope', 'Project', 'Workspace', 'Points', 'WORKSPACE_ID', function ($scope, Project, Workspace, Points, WORKSPACE_ID) {
 
     $scope.tasks = [];
-    $scope.tags = [];
+    $scope.allPointTags = [];
     var tasksLoaded = false;
     var tagsLoaded = false;
 
@@ -19,7 +19,7 @@ angular.module('kanbanBoardApp')
 
     $scope.init = function () {
       $scope.loadProjectTasks();
-      $scope.loadTags();
+      $scope.loadAllPointTags();
     };
 
     $scope.loadProjectTasks = function () {
@@ -29,9 +29,9 @@ angular.module('kanbanBoardApp')
       });
     };
 
-    $scope.loadTags = function () {
+    $scope.loadAllPointTags = function () {
       Workspace.get({path: 'tags'}, function (response) {
-        $scope.tags = response.data;
+        $scope.allPointTags = Points.getPointTags(response.data);
         tagsLoaded = true;
       });
     };
