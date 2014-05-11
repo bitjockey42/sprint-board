@@ -37,7 +37,10 @@
             <td><span ng-hide="isProjectHeader(task)"
                       class="label"
                       ng-class="{true: 'label-success', false: 'label-default'}[shouldHighlightPoints(points)]">{{ points }} points</span></td>
-            <td>{{ task.name }}</td>
+            <td ng-switch on="isProjectHeader(task)">
+              <h3 ng-switch-when=true>{{ task.name }}</h3>
+              <p ng-switch-when=false>{{ task.name }}</p>
+            </td>
             <td>
 
               <div ng-hide="isProjectHeader(task)"
