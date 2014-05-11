@@ -4,7 +4,7 @@ angular.module('kanbanBoardApp')
   .controller('SprintCtrl', ['$scope', 'Workspace', function ($scope, Workspace) {
     
     $scope.sprintProjects = [];
-    $scope.currentSprintProject = "";
+    $scope.currentSprintProject = '';
 
     var sprintProjectsLoaded = false;
 
