@@ -2,6 +2,7 @@
 
 angular.module('kanbanBoardApp')
   .controller('TaskCtrl', ['$scope', 'Task', 'Points', function ($scope, Task, Points) {
+
     var taskPointsLoaded = false;
 
     $scope.loadTaskPoints = function () {
@@ -36,4 +37,9 @@ angular.module('kanbanBoardApp')
     $scope.removePointTag = function (pointTagId) {
       Task.removeTag({taskId: $scope.task.id}, {data: {tag: pointTagId}});
     };
+
+    $scope.shouldHighlightPoints = function (points) {
+      return points > 0;
+    };
+
   }]);

@@ -34,7 +34,8 @@
           <tr ng-repeat="task in tasks"
               ng-controller="TaskCtrl"
               ng-init="loadTaskPoints()">
-            <td>{{ points }}</td>
+            <td><span class="label"
+                      ng-class="{true: 'label-success'}[shouldHighlightPoints(points)]">{{ points }}</span></td>
             <td>{{ task.name }}</td>
             <td>
               <select ng-model="pointTag" 
