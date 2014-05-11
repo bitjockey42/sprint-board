@@ -13,9 +13,13 @@
     <h1>{{ currentSprintProject.name }}</h1>
 
     <div ng-controller="BoardCtrl" ng-init="init()">
-      <h1>Board</h1>
 
-      <h2 ng-show="tasksLoaded()">{{ calculateTotal() }}</h2>
+      <div class="panel panel-primary">
+        <div class="panel-heading">Total Points</div>
+        <div class="panel-body">
+          <h1>{{ calculateTotal() }}</h1>
+        </div>
+      </div>
 
       <div ng-show="tasksLoaded()" ng-repeat="task in tasks">
         <div ng-switch on="isProjectHeader(task)">
