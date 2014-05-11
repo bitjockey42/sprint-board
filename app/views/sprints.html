@@ -10,7 +10,7 @@
       </a>
     </div>
 
-    <h1>{{ currentSprintProject.name }}</h1>
+    <h1>{{ currentSprintProject.name }} <small>Currently Selected Sprint</small></h1>
 
     <div ng-controller="BoardCtrl" ng-init="init()">
 
@@ -21,35 +21,26 @@
         </div>
       </div>
 
-      <div ng-show="tasksLoaded()" ng-repeat="task in tasks">
-        <div ng-switch on="isProjectHeader(task)">
-          <div ng-switch-when=false>
-            <p>{{ task.id }} {{ task.name }}</p>
-            
-            <div ng-controller="TaskCtrl" 
-                 ng-init="loadTaskPoints()"
-                 ng-show="taskPointsLoaded()">
+      <table ng-show="tasksLoaded()" class="table">
+        <thead>
+          <tr>
+            <th>Points</th>
+            <th>Task</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
 
-              <p style="color: white; background: red; font-size: 20pt; padding: 2px;">{{ points }}</p>
+        <tbody>
+          <tr ng-repeat="task in tasks"
+              ng-controller="TaskCtrl"
+              ng-init="loadTaskPoints()">
+            <td>{{ points }}</td>
+            <td>{{ task.name }}</td>
+            <td>These will be actions</td>
+          </tr>
+        </tbody>
 
-              <div ng-show="tagsLoaded()">
-                <select ng-model="pointTag" 
-                        ng-options="pointTag.name for pointTag in allPointTags | orderBy: 'name'">
-                  <option value="">Select a point</option>
-                </select>
-                {{ pointTag }}
-                <button ng-click="setPointTag()">set point</button>
-                <button ng-click="resetPointTags()">reset points</button>
-              </div>
-
-            </div>
-          </div>
-
-          <div ng-switch-when=true><h2>{{ task.name }}</h2></div>
-
-          <hr>
-        </div>
-      </div>
+      </table>
     </div>
   </div>
 </div>
