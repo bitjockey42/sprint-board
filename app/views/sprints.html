@@ -11,14 +11,10 @@
 
     <button ng-click="setCurrentSprintProject()">Select this sprint</button>
 
-
-
     <div ng-controller="BoardCtrl" ng-init="init()">
       <h1>Board</h1>
 
-      <pre>{{ currentSprintProject }}</pre>
-
-      <pre>{{ pointsTotal }}</pre>
+      <h2 ng-show="tasksLoaded()">{{ calculateTotal() }}</h2>
 
       <div ng-show="tasksLoaded()" ng-repeat="task in tasks">
         <div ng-switch on="isProjectHeader(task)">

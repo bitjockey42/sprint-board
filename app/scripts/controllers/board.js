@@ -2,7 +2,7 @@
 
 angular.module('kanbanBoardApp')
   .controller('BoardCtrl', ['$scope', 'Task', 'Project', 'Workspace', 'Tag', 'WORKSPACE_ID', 'PROJECT_ID', function ($scope, Task, Project, Workspace, Tag, WORKSPACE_ID, PROJECT_ID) {
-    $scope.pointsTotal = {};
+    $scope.pointsByTaskId = {};
     $scope.tasks = [];
     $scope.tags = [];
     var tasksLoaded = false;
@@ -11,10 +11,6 @@ angular.module('kanbanBoardApp')
     $scope.$on('currentSprintProjectSet', function () {
       $scope.init();
     });
-
-    $scope.tasksLoaded = function () {
-      return tasksLoaded;
-    }
 
     $scope.init = function () {
       $scope.loadProjectTasks();
@@ -28,10 +24,6 @@ angular.module('kanbanBoardApp')
       });
     };
 
-    $scope.tagsLoaded = function () {
-      return tagsLoaded;
-    };
-
     $scope.loadTags = function () {
       Workspace.get({path: 'tags'}, function (response) {
         $scope.tags = response.data;
@@ -39,8 +31,16 @@ angular.module('kanbanBoardApp')
       });
     };
 
+    $scope.tasksLoaded = function () {
+      return tasksLoaded;
+    }
+
+    $scope.tagsLoaded = function () {
+      return tagsLoaded;
+    };
+
     $scope.calculateTotal = function() {
-      var pointValues = _.values($scope.pointsTotal);
+      var pointValues = _.values($scope.pointsByTaskId);
       return pointValues.reduce( function(a,b) {
         return a + b;
       });
