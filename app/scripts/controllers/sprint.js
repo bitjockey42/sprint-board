@@ -29,4 +29,20 @@ angular.module('kanbanBoardApp')
       $scope.currentSprintProject = sprintProject;
     };
 
+    $scope.calculateTotal = function() {
+      var pointValues = _.values($scope.pointsByTaskId);
+      return pointValues.reduce( function(a,b) {
+        return a + b;
+      });
+    };
+
+    $scope.$watch('currentSprintProject', function (newValue, oldValue) {
+      if (newValue === oldValue) {
+        return;
+      } else {
+        $scope.pointsByTaskId = {};
+        $scope.$broadcast('sprintProjectChanged');
+      }
+    });
+
   }]);

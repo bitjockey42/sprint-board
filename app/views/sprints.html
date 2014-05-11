@@ -2,24 +2,29 @@
 
   <div ng-show="sprintProjectsLoaded()">
 
-    <div class="list-group">
-      <a class="list-group-item"
-         ng-repeat="sprintProject in sprintProjects"
-         ng-click="setCurrentSprintProject(sprintProject)">
-        {{ sprintProject.name }}
-      </a>
-    </div>
+    <div class="row">
 
-    <h1>{{ currentSprintProject.name }} <small>Currently Selected Sprint</small></h1>
+      <h1 class="page-header">{{ currentSprintProject.name }} <small>Currently Selected Sprint</small></h1>
+      
+      
+      <div class="col-md-6 list-group">
+        <a class="list-group-item"
+           ng-repeat="sprintProject in sprintProjects"
+           ng-click="setCurrentSprintProject(sprintProject)">
+          {{ sprintProject.name }}
+        </a>
+      </div>
 
-    <div ng-controller="BoardCtrl" ng-init="init()">
 
-      <div class="panel panel-primary">
+      <div class="col-md-4 panel panel-primary">
         <div class="panel-heading">Total Points</div>
         <div class="panel-body">
           <h1>{{ calculateTotal() }}</h1>
         </div>
       </div>
+    </div>
+
+    <div ng-controller="BoardCtrl" ng-init="init()">
 
       <table ng-show="tasksLoaded()" class="table">
         <thead>
@@ -38,10 +43,7 @@
                       class="label"
                       ng-class="{true: 'label-success', false: 'label-default'}[shouldHighlightPoints(points)]">{{ points }} points</span></td>
             <td ng-switch on="isProjectHeader(task)">
-              <div class="alert alert-info" 
-                   ng-switch-when=true>
-                <h2>{{ task.name }}</h2>
-              </div>
+              <h2 ng-switch-when=true>{{ task.name }}</h2>
               <p ng-switch-when=false>{{ task.name }}</p>
             </td>
             <td>
@@ -50,7 +52,7 @@
                  class="btn-toolbar" role="toolbar">
                 <div class="btn-group btn-group-sm">
                   <button 
-                     class="btn btn-default"
+                     class="btn btn-info"
                      ng-repeat="pointTag in allPointTags | orderBy: 'name'"
                      ng-click="setPointTag(pointTag)">
                     {{ pointValue(pointTag) }}

@@ -8,15 +8,10 @@ angular.module('kanbanBoardApp')
     var tasksLoaded = false;
     var tagsLoaded = false;
 
-    $scope.$watch('currentSprintProject', function (newValue, oldValue) {
-      if (newValue === oldValue) {
-        return;
-      } else {
-        $scope.pointsByTaskId = {};
-        $scope.init();
-      }
+    $scope.$on('sprintProjectChanged', function () {
+      $scope.init();
     });
-
+               
     $scope.init = function () {
       $scope.loadProjectTasks();
       $scope.loadAllPointTags();
@@ -42,13 +37,6 @@ angular.module('kanbanBoardApp')
 
     $scope.tagsLoaded = function () {
       return tagsLoaded;
-    };
-
-    $scope.calculateTotal = function() {
-      var pointValues = _.values($scope.pointsByTaskId);
-      return pointValues.reduce( function(a,b) {
-        return a + b;
-      });
     };
 
     $scope.isProjectHeader = function (task) {
