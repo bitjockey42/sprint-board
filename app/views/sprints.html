@@ -1,15 +1,16 @@
 <div ng-controller="SprintCtrl" ng-init="loadSprintProjects()">
 
-
-  <h1>Sprints</h1>
-
   <div ng-show="sprintProjectsLoaded()">
-    <select ng-model="sprintProject"
-            ng-options="sprintProject.name for sprintProject in sprintProjects">
-      <option value="">Select a sprint</option>
-    </select>
 
-    <button ng-click="setCurrentSprintProject()">Select this sprint</button>
+    <div class="list-group">
+      <a class="list-group-item"
+         ng-repeat="sprintProject in sprintProjects"
+         ng-click="setCurrentSprintProject(sprintProject)">
+        {{ sprintProject.name }}
+      </a>
+    </div>
+
+    <h1>{{ currentSprintProject.name }}</h1>
 
     <div ng-controller="BoardCtrl" ng-init="init()">
       <h1>Board</h1>
