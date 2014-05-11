@@ -28,7 +28,7 @@ angular.module('kanbanBoardApp')
 
     $scope.getPointTags = function (tags) {
       return tags.filter( function (tag) {
-        if (tag.name.match(/points/)) {
+        if (tag.name.match(/point/)) {
           return tag;
         }
       });
