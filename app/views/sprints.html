@@ -1,0 +1,9 @@
+<div ng-controller="SprintCtrl" ng-init="loadSprintProjects()">
+
+  <h1>Sprints</h1>
+
+  <ul ng-show="sprintProjectsLoaded()" ng-repeat="sprintProject in sprintProjects">
+    <li>{{ sprintProject.name }}</li>
+  </ul>
+
+</div>
