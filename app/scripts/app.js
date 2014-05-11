@@ -10,20 +10,8 @@ angular.module('kanbanBoardApp', [
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/board.html',
-        controller: 'BoardCtrl'
-      })
-      .when('/sprints', {
         templateUrl: 'views/sprints.html',
         controller: 'SprintCtrl'
-      })
-      .when('/tags', {
-        templateUrl: 'views/tags.html',
-        controller: 'BoardCtrl'
-      })
-      .when('/points', {
-        templateUrl: 'views/points.html',
-        controller: 'PointsCtrl'
       })
       .otherwise({
         redirectTo: '/'

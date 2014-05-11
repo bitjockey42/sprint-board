@@ -1,17 +1,21 @@
 <div ng-controller="SprintCtrl" ng-init="loadSprintProjects()">
 
-  <h1>Sprints</h1>
+  <script type="text/ng-template" id="sprints.html">
+    <h1>Sprints</h1>
 
-  <div ng-show="sprintProjectsLoaded()">
-    <select ng-model="sprintProject"
-            ng-options="sprintProject.name for sprintProject in sprintProjects">
-      <option value="">Select a sprint</option>
-    </select>
+    <div ng-show="sprintProjectsLoaded()">
+      <select ng-model="sprintProject"
+              ng-options="sprintProject.name for sprintProject in sprintProjects">
+        <option value="">Select a sprint</option>
+      </select>
 
-    <button ng-click="setCurrentSprintProject()">Select this sprint</button>
+      <button ng-click="setCurrentSprintProject()">Select this sprint</button>
 
-    <pre>{{ currentSprintProject }}</pre>
+      <pre>{{ currentSprintProject }}</pre>
+    </div>
+  </script>
 
-  </div>
+  <div ng-include="'sprints.html'"></div>
 
 </div>
+
