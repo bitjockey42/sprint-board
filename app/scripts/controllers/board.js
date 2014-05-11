@@ -13,11 +13,8 @@ angular.module('kanbanBoardApp')
         return;
       } else {
         $scope.pointsByTaskId = {};
+        $scope.init();
       }
-    });
-
-    $scope.$on('currentSprintProjectSet', function () {
-      $scope.init();
     });
 
     $scope.init = function () {
