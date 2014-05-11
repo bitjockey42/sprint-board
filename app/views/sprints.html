@@ -1,21 +1,55 @@
 <div ng-controller="SprintCtrl" ng-init="loadSprintProjects()">
 
-  <script type="text/ng-template" id="sprints.html">
-    <h1>Sprints</h1>
 
-    <div ng-show="sprintProjectsLoaded()">
-      <select ng-model="sprintProject"
-              ng-options="sprintProject.name for sprintProject in sprintProjects">
-        <option value="">Select a sprint</option>
-      </select>
+  <h1>Sprints</h1>
 
-      <button ng-click="setCurrentSprintProject()">Select this sprint</button>
+  <div ng-show="sprintProjectsLoaded()">
+    <select ng-model="sprintProject"
+            ng-options="sprintProject.name for sprintProject in sprintProjects">
+      <option value="">Select a sprint</option>
+    </select>
+
+    <button ng-click="setCurrentSprintProject()">Select this sprint</button>
+
+
+
+    <div ng-controller="BoardCtrl" ng-init="init()">
+      <h1>Board</h1>
 
       <pre>{{ currentSprintProject }}</pre>
+
+      <pre>{{ pointsTotal }}</pre>
+
+      <div ng-show="tasksLoaded()" ng-repeat="task in tasks">
+        <div ng-switch on="isProjectHeader(task)">
+          <div ng-switch-when=false>
+            <p>{{ task.id }} {{ task.name }}</p>
+            
+            <div ng-controller="TaskCtrl" 
+                 ng-init="loadTaskPoints()"
+                 ng-show="taskPointsLoaded()">
+
+              <p style="color: white; background: red; font-size: 20pt; padding: 2px;">{{ points }}</p>
+
+              <div ng-show="tagsLoaded()">
+                <select ng-model="pointTag" 
+                        ng-options="pointTag.name for pointTag in getPointTags(tags) | orderBy: 'name'">
+                  <option value="">Select a point</option>
+                </select>
+                {{ pointTag }}
+                <button ng-click="setPointTag()">set point</button>
+                <button ng-click="resetPointTags()">reset points</button>
+              </div>
+
+            </div>
+          </div>
+
+          <div ng-switch-when=true><h2>{{ task.name }}</h2></div>
+
+          <hr>
+        </div>
+      </div>
     </div>
-  </script>
-
-  <div ng-include="'sprints.html'"></div>
-
+  </div>
 </div>
 

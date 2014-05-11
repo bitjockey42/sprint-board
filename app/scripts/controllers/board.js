@@ -8,6 +8,10 @@ angular.module('kanbanBoardApp')
     var tasksLoaded = false;
     var tagsLoaded = false;
 
+    $scope.$on('currentSprintProjectSet', function () {
+      $scope.init();
+    });
+
     $scope.tasksLoaded = function () {
       return tasksLoaded;
     }
@@ -18,7 +22,7 @@ angular.module('kanbanBoardApp')
     };
 
     $scope.loadProjectTasks = function () {
-      Project.tasks({projectId: PROJECT_ID}, function (response) {
+      Project.tasks({projectId: $scope.currentSprintProject.id}, function (response) {
         $scope.tasks = response.data;
         tasksLoaded = true;
       });

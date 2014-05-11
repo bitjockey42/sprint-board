@@ -26,6 +26,7 @@ angular.module('kanbanBoardApp')
 
     $scope.setCurrentSprintProject = function () {
       $scope.currentSprintProject = $scope.sprintProject;
+      $scope.$broadcast("currentSprintProjectSet");
     };
 
 }]);
