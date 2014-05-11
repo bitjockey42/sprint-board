@@ -2,11 +2,19 @@
 
 angular.module('kanbanBoardApp')
   .controller('BoardCtrl', ['$scope', 'Task', 'Project', 'Workspace', 'Tag', 'WORKSPACE_ID', 'PROJECT_ID', function ($scope, Task, Project, Workspace, Tag, WORKSPACE_ID, PROJECT_ID) {
-    $scope.pointsByTaskId = {};
+
     $scope.tasks = [];
     $scope.tags = [];
     var tasksLoaded = false;
     var tagsLoaded = false;
+
+    $scope.$watch('currentSprintProject', function (newValue, oldValue) {
+      if (newValue == oldValue) {
+        return;
+      } else {
+        $scope.pointsByTaskId = {};
+      }
+    });
 
     $scope.$on('currentSprintProjectSet', function () {
       $scope.init();

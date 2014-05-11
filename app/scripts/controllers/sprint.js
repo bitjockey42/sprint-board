@@ -5,6 +5,7 @@ angular.module('kanbanBoardApp')
     
     $scope.sprintProjects = [];
     $scope.currentSprintProject = "None";
+
     var sprintProjectsLoaded = false;
 
     $scope.sprintProjectsLoaded = function () {
