@@ -20,9 +20,13 @@ angular.module('sprintBoardApp')
 
     $scope.setPointTag = function (pointTag) {
       $scope.resetPointTags();
-      Task.addTag({taskId: $scope.task.id}, {data: {tag: pointTag.id}}, function () {
-        $scope.points = Points.forTask([pointTag]);
-        $scope.pointsByTaskId[$scope.task.id] = $scope.points;
+      Task.addTag({taskId: $scope.task.id}, {data: {tag: pointTag.id}}, function (response) {
+        if (response.$resolved) {
+          $scope.points = Points.forTask([pointTag]);
+          $scope.pointsByTaskId[$scope.task.id] = $scope.points;
+        } else {
+          console.log("Oh noes, an error occurred.");
+        }
       });
     };
 

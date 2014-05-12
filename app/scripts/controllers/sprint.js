@@ -5,6 +5,7 @@ angular.module('sprintBoardApp')
     
     $scope.sprintProjects = [];
     $scope.currentSprintProject = '';
+    $scope.pointsByTaskId = {0: 0};
 
     var sprintProjectsLoaded = false;
 
@@ -40,7 +41,7 @@ angular.module('sprintBoardApp')
       if (newValue === oldValue) {
         return;
       } else {
-        $scope.pointsByTaskId = {};
+        $scope.pointsByTaskId = {0: 0};
         $scope.$broadcast('sprintProjectChanged');
       }
     });
