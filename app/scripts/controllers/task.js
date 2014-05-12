@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('kanbanBoardApp')
+angular.module('sprintBoardApp')
   .controller('TaskCtrl', ['$scope', 'Task', 'Points', function ($scope, Task, Points) {
 
     var taskPointsLoaded = false;

@@ -1,4 +1,4 @@
-angular.module('kanbanBoardApp')
+angular.module('sprintBoardApp')
   .constant('API_KEY', '<this would be your Asana API Key encoded in base64')
   .constant('WORKSPACE_ID', '<the id of the workspace for which you want to see tasks>')
   .constant('PROJECT_ID', '<the id of the project for which you want to see tasks>');

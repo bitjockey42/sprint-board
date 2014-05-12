@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('kanbanBoardApp')
+angular.module('sprintBoardApp')
   .controller('BoardCtrl', ['$scope', 'Project', 'Workspace', 'Points', function ($scope, Project, Workspace, Points) {
 
     $scope.tasks = [];

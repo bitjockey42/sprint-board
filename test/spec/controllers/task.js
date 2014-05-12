@@ -3,7 +3,7 @@
 describe('Controller: TaskCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('kanbanBoardApp'));
+  beforeEach(module('sprintBoardApp'));
 
   var TaskCtrl,
     scope;

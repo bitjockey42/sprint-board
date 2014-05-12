@@ -3,7 +3,7 @@
 describe('Controller: BoardCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('kanbanBoardApp'));
+  beforeEach(module('sprintBoardApp'));
   beforeEach(module('Asana'));
 
   var BoardCtrl, Task, Project,

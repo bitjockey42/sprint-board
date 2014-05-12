@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('kanbanBoardApp')
+angular.module('sprintBoardApp')
   .service('Points', function () {
     this.forTask = function (tags) {
       var pointValue = 0;

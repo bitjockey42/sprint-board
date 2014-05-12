@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('kanbanBoardApp', [
+angular.module('sprintBoardApp', [
   'Asana',
   'ngCookies',
   'ngResource',
