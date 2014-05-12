@@ -1,9 +1,13 @@
-gKanban Board App
+Sprint Board
 -------------------
 
-This will display tasks from task list provider into kanban board style.
+This is a simple angular-based, single-page app used for sprint planning that interacts with third-party task providers (e.g. Asana). It may be of interest if your team uses a points system to do time estimations for tasks.
 
-Mainly this is intended for personal use in cases where you want to have a Kanban style task management system but cannot because you use a linear task management system at work.
+Features
+===========
+
+ - Assign and remove points for tasks
+ - View tasks for other sprint projects
 
 Supported Task Providers
 =========================
